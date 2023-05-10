@@ -6,11 +6,17 @@ const ASCII_CHARS: &str =
     " `.-':_,^=;><+!rc*/z?sLTv)J7(|Fi{C}fI31tlu[neoZ5Yxjya]2ESwqkP6h9d4VpOGbUAKXHm8RD#$Bg0MNWQ%&@";
 const CHARS_LEN: usize = ASCII_CHARS.len();
 
-pub fn image_to_ascii(path: &str, width: u32, height: u32) -> Result<String> {
+pub fn image_to_ascii(path: &str, width: u32, height: u32, invert_color: bool) -> Result<String> {
     // Open image
     let img = ImageReader::open(path)?.decode()?;
     // Resize
-    let resized_img = img.resize_exact(width, height, FilterType::Nearest);
+    let mut resized_img = img.resize_exact(width, height, FilterType::Nearest);
+
+    // Invert color if specified
+    if invert_color {
+        resized_img.invert();
+    }
+
     // Convert to grayscale
     match resized_img.grayscale() {
         ImageLuma8(gray_img) => Ok(convert_to_ascii(gray_img)?),
