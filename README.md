@@ -1,6 +1,13 @@
-# ASCII Art Converter
+<img src="md_assets/charshades.svg" height="200px"/>
+
+# CharShades - ASCII Art Converter
 
 Convert images into ASCII art.
+
+> **Warning**
+> This project is still in early development and has very limited functionality.
+> The idea is to keep developing it in the open.
+> Contributions are welcome!
 
 ## Features
 
