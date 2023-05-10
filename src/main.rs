@@ -18,7 +18,11 @@ fn main() {
     // Save result to file if specified
     if let Some(output) = args.output {
         match std::fs::write(&output, &result) {
-            Ok(_) => println!("Result saved in {}", output),
+            Ok(_) => {
+                if !args.quiet {
+                    println!("Result saved in {}", output)
+                }
+            }
             Err(e) => eprintln!("Error saving result: {}", e),
         }
     }
