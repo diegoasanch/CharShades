@@ -1,6 +1,8 @@
+<p align="center">
 <img src="md_assets/charshades.svg" height="200px"/>
+</p>
 
-# CharShades - ASCII Art Converter
+# CharShades - Image to ASCII Art Converter
 
 Convert images into ASCII art.
 
