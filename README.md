@@ -19,6 +19,24 @@ Convert images into ASCII art.
 - Save the output to a file
 - Suppress stdout output for silent operation
 
+## Example
+
+### Command
+
+```bash
+cargo run -- md_assets/vader.webp -W 130 -H 40
+```
+
+### Comparison
+
+Original image (left) and output (right)
+
+<p align="center">
+    <img src="md_assets/vader.webp" width="45%" />
+    <img src="md_assets/vader_ascii.png" width="45%" />
+</p>
+
+
 ## Usage
 
 To use the application, you need to provide a file to convert and specify the width and height of the output.
