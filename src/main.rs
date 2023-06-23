@@ -10,8 +10,10 @@ fn main() {
     let result = match converter::image_to_ascii(&args.file, args.width, args.height, args.invert) {
         Ok(ascii) => ascii,
         Err(e) => {
-            eprintln!("Error generating ascii: {}", e);
-            return;
+            if !args.quiet {
+                    eprintln!("Error generating ascii: {}", e);
+            }
+            return 1;
         }
     };
 
@@ -20,10 +22,13 @@ fn main() {
         match std::fs::write(&output, &result) {
             Ok(_) => {
                 if !args.quiet {
-                    println!("Result saved in {}", output)
+                    println!("Result saved in {}", output);
                 }
             }
-            Err(e) => eprintln!("Error saving result: {}", e),
+            Err(e) => {
+                eprintln!("Error saving result: {}", e);
+                return 1;
+            }
         }
     }
 
